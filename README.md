@@ -10,7 +10,7 @@
 
 ## 🚀 시작하기
 
-- 설치하기: Python 공식 웹사이트(https://www.python.org)에서 다운로드하여 설치하세요.
+- 설치하기: Python 공식 웹사이트(https://www.python.org) 에서 다운로드하여 설치하세요.
     python
 ```
 print("안녕하세요, 파이썬!")
