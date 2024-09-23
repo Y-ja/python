@@ -1,10 +1,13 @@
 class Student:
+    count = 0  # 클래스 변수
+
     def __init__(self, name, kor, eng, math, scien):
         self.name = name
         self.kor = kor
         self.eng = eng
         self.math = math
         self.scien = scien
+        Student.count += 1  # 학생이 생성될 때마다 count 증가
 
     def total_score(self):
         return self.kor + self.eng + self.math + self.scien
@@ -25,7 +28,10 @@ class Student:
         return self.total_score() >= other.total_score()
 
     def __lt__(self, other: 'Student') -> bool:
-        return self.total_score() < other.total_score()
+        if isinstance(other, Student):
+            return self.total_score() < other.total_score()
+        elif isinstance(other, int):
+            return self.total_score() < other
 
     def __le__(self, other: 'Student') -> bool:
         return self.total_score() <= other.total_score()
@@ -33,9 +39,7 @@ class Student:
     def __str__(self) -> str:
         score_sum = self.total_score()
         score_avg = self.average_score()
-        return (f"이름: {self.name}, 국어: {self.kor}, 영어: {self.eng}, "
-                f"수학: {self.math}, 과학: {self.scien}, 합계: {score_sum}, "
-                f"평균: {score_avg:.2f}")
+        return (f"{self.name}\t{score_sum}\t{score_avg:.2f}")
 
 def main():
     students = [
@@ -48,12 +52,12 @@ def main():
     ]
     
     # 학생 정보 출력
+    print("이름\t총점\t평균")
     for student in students:
         print(student)
 
-    # 새로운 학생 추가
-    new_student = Student("Alex", 87, 82, 73, 84)
-    print(new_student)
+    # 총 학생 수 출력
+    print(f"\n총 학생 수: {Student.count}")
 
 if __name__ == "__main__":
     main()
