@@ -129,3 +129,137 @@ my_list = [1, 2, 3, 4, 5]
 ### 📖 딕셔너리 메서드 (Dictionary Methods)
 - update(other): 다른 딕셔너리의 키-값 쌍으로 업데이트
 - popitem(): 마지막으로 추가된 키-값 쌍을 삭제하고 반환
+
+## 2024_09_23
+
+### 01. 클래스 개념 🏷️
+클래스는 객체 지향 프로그래밍의 기본 단위로, 데이터와 메서드를 묶어 새로운 데이터 타입을 정의합니다.
+
+```python
+class Dog:
+    def bark(self):
+        return "Woof!"
+```
+
+## 02. 파이썬 데이터 처리 (간단한 클래스, dataclass 디코레이터) 💻
+
+- 간단한 클래스: 사용자 정의 데이터 구조를 만드는 방법.
+- dataclass 디코레이터: 데이터 클래스를 간편하게 정의하고 기본 메서드를 자동으로 생성합니다.
+
+```
+from dataclasses import dataclass
+
+@dataclass
+class Person:
+    name: str
+    age: int
+
+```
+
+## 03. 메서드 추가 ➕
+클래스에 다양한 메서드를 추가하여 기능을 확장하는 방법을 설명합니다.
+```
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+```
+
+## 04. 스페셜 메서드 추가 ✨
+
+__init__, __str__, __repr__ 등의 스페셜 메서드를 활용하여 클래스의 동작을 정의합니다.
+
+```
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"Point({self.x}, {self.y})"
+
+```
+
+## 05. 클래스 변수 활용 (dataclass 디코레이터) 📊
+클래스 변수와 인스턴스 변수를 구분하고 활용하는 방법을 다룹니다.
+
+```
+class Counter:
+    count = 0
+
+    def __init__(self):
+        Counter.count += 1
+
+```
+
+## 06. private 설정 🔒
+변수를 비공개로 설정하여 외부에서 접근하지 못하도록 보호하는 방법을 설명합니다.
+
+```
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # private variable
+
+    def get_balance(self):
+        return self.__balance
+
+```
+## 07. property 디코레이터 (getter, setter) 🔍
+@property를 사용하여 속성을 제어하고, getter/setter 메서드를 만드는 방법을 설명합니다.
+
+```
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9/5 + 32
+
+    @fahrenheit.setter
+    def fahrenheit(self, value):
+        self._celsius = (value - 32) * 5/9
+
+```
+
+## 08. 재귀 함수 (lru_cache 디코레이터, tuple exchange) 🔄
+재귀 함수의 개념과 functools.lru_cache를 활용하여 성능을 향상시키는 방법을 다룹니다.
+
+```
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+```
+
+## 09. lambda 함수 (파일 처리, 랜덤 모듈, 제너레이터) 🔄
+람다 함수의 활용 예제와 함께 파일 처리 및 제너레이터를 소개합니다.
+
+```
+import random
+
+random_numbers = list(map(lambda x: x * 2, range(10)))
+print(random_numbers)  # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+```
+
+## 2024_09_24
+
+## 모듈 개념 📦
+모듈은 관련된 함수와 클래스를 하나의 파일로 묶어 재사용할 수 있도록 합니다. 다른 파일에서 모듈을 불러와 기능을 확장할 수 있습니다.
+
+```
+# my_module.py
+def greet(name):
+    return f"Hello, {name}!"
+
+# main.py
+from my_module import greet
+
+print(greet("Alice"))  # Hello, Alice!
+
+```
