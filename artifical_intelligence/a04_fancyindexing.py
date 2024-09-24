@@ -7,5 +7,7 @@ def main():
     print(x[cond])  # x에서 cond 인덱스의 요소 출력
     print(x[cond2])
 
-if __name__ == "__main__":  
-    main()  # main 함수 호출
+if __name__ == "__main__":
+    # 직접 실행 시_main 함수 호출
+    # Call main function when executed directly   
+    main()  
