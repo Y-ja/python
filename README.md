@@ -263,3 +263,34 @@ from my_module import greet
 print(greet("Alice"))  # Hello, Alice!
 
 ```
+
+## 패키지 개념 📂
+
+패키지는 관련된 여러 모듈을 하나의 디렉터리로 묶는 방법입니다. 패키지를 통해 모듈의 구조를 정리할 수 있습니다.
+
+```
+my_package/
+    __init__.py
+    module1.py
+    module2.py
+
+```
+
+## import 개념 📥
+
+다른 모듈이나 패키지를 사용할 때는 import 문을 사용합니다. 이를 통해 외부 기능을 쉽게 활용할 수 있습니다.
+
+```
+import my_module  # 모듈 전체를 임포트
+from my_module import greet  # 특정 함수만 임포트
+
+```
+## __init__.py 개념 📝
+
+패키지를 정의하는 파일로, 패키지를 임포트할 때 실행됩니다. 이 파일이 존재해야 Python은 디렉터리를 패키지로 인식합니다.
+
+```
+# __init__.py
+print("my_package가 임포트되었습니다!")
+
+```
